@@ -1,6 +1,7 @@
 package com.spazomatic.designpatterns.structural.facade;
 /*
  * Facade is used to abstract complexities of underlying system.
+ * Decouples client from subsystem. Acts as access point while delegating work to subsystem.
  */
 public class FinancialSystemFacade {
 
