@@ -8,6 +8,13 @@ import com.google.common.collect.Lists;
 
 import lombok.extern.slf4j.Slf4j;
 
+/*
+ * Demonstration of use of function interface Predicate. Predicate allows
+ * us to define a test that can be used for any given object.
+ *
+ * @author samuelsegal
+ *
+ */
 @Slf4j
 public class PredicateExample {
 	public static void main(String[] args) {
