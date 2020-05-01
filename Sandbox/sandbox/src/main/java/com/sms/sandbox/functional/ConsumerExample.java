@@ -21,10 +21,13 @@ public class ConsumerExample {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		Consumer consumer = s -> System.out.println(s);
-		consumer.accept("Print me");
+		Consumer<Integer> consumer = s -> System.out.println(s);
+		Consumer<Object> consumerMethodReference = System.out :: println;
+		
+		consumer.accept(0);
+		
 		printListElements(Lists.newArrayList(1, 2,3,4,5,6,7,8,9), consumer);
-		printListElements(Lists.newArrayList("a", 1, " b", 44, "Tooty"), consumer);
+		printListElements(Lists.newArrayList("a", 1, " b", 44, "Tooty"), consumerMethodReference);
 	}
 
 	private static <T> void printListElements(ArrayList<T> list, Consumer<T> consumer) {

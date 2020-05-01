@@ -10,7 +10,8 @@ import lombok.extern.slf4j.Slf4j;
 
 /*
  * Demonstration of use of function interface Predicate. Predicate allows
- * us to define a test that can be used for any given object.
+ * us to define a test that can be used for any given object and to pass it 
+ * as a parameter the fly
  *
  * @author samuelsegal
  *
