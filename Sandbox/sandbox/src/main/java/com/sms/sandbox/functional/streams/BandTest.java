@@ -8,8 +8,8 @@ import java.util.stream.Stream;
 public class BandTest {
 
 	private Band[] bandArr = {new Band("Motley Crue", "hairband"), new Band("Fugazi", "punk"),
-			new Band("Bad Brains", "punk"), new Band("Nirvana", "grunge")};
-	private List<Band> bandList = Arrays.asList();
+			new Band("Bad Brains", "punk"), new Band("Nirvana", "grunge"),new Band("Bad Brains", "punk")};
+	private List<Band> bandList = Arrays.asList(bandArr);
 
 	public static void main(String[] args) {
 		BandTest bt = new BandTest();
