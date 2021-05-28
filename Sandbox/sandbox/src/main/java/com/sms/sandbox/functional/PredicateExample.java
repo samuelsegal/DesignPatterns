@@ -3,6 +3,7 @@ package com.sms.sandbox.functional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import com.google.common.collect.Lists;
 
@@ -23,10 +24,9 @@ public class PredicateExample {
 		list.add("Tooty");
 		list.add("Too");
 		list.add("Rudy");
-		log.info("OG list with words containg Too {}", list);
-		Predicate<String> predicate = s -> !s.contains("Too");
+		Predicate<String> predicate = s -> s.contains("Too");
 		List<String> filteredList = filterList(list, predicate);
-		log.debug("Filtered List without words containing Too {}", filteredList);
+		log.info("Filtered List with words containing Too {}", filteredList);
 		
 		
 		List<Integer> intList = Lists.newArrayList(1,2,3,4);
@@ -37,15 +37,16 @@ public class PredicateExample {
 	}
 
 	private static List<String> filterList(List<String> list, Predicate<String> predicate) {
-		List<String> filteredList = new ArrayList<>();
-
-		for (String str : list) {
-			if (predicate.test(str)) {
-				filteredList.add(str);
-			}
-
-		}
-		return filteredList;
+//		List<String> filteredList = new ArrayList<>();
+//
+//		for (String str : list) {
+//			if (predicate.test(str)) {
+//				filteredList.add(str);
+//			}
+//
+//		}
+//		return filteredList;
+		return list.stream().filter(predicate).collect(Collectors.toList());
 	}
 	/**
 	 * Same as filtered but handles any type
@@ -54,14 +55,15 @@ public class PredicateExample {
 	 * @return
 	 */
 	private static <T> List<T> filterGenericList(List<T> list, Predicate<T> predicate) {
-		List<T> filteredList = new ArrayList<>();
-
-		for (T str : list) {
-			if (predicate.test(str)) {
-				filteredList.add(str);
-			}
-
-		}
-		return filteredList;
+//		List<T> filteredList = new ArrayList<>();
+//
+//		for (T str : list) {
+//			if (predicate.test(str)) {
+//				filteredList.add(str);
+//			}
+//
+//		}
+//		return filteredList;
+		return list.stream().filter(predicate).collect(Collectors.toList());
 	}
 }
