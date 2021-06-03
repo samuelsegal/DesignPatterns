@@ -1,26 +1,35 @@
 package rxJavaBox.chapters;
 
-import java.util.concurrent.TimeUnit;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import io.reactivex.rxjava3.core.Observable;
 
 public class Ch1_1 {
 	public static void main(String[] args) {
-		//Observable<String> myStrings = Observable.just("Alpha", "Beta", "Gamma");
-		Observable<String> strs = Observable.just("samo", "albert", "friend");
-		strs.subscribe(System.out::println);
-		strs.map(s->s.length()).subscribe(System.out::println);
+
 		
+		Observable<String> stream$ = Observable.create(emitter -> {
+			emitter.onNext("Heres something");
+
+			Timer timer = new Timer();
+			timer.schedule(new TimerTask() {
+				
+				@Override
+				public void run() {
+					// TODO Auto-generate. method stub
+				 emitter.onNext("And something in 3 seconds, good bye");
+				 emitter.onComplete();
+				 timer.cancel();;
+				}
+			}, 1000);
+			
+		});
 		
-		//Intervals
-		Observable<Long> seconds$ = Observable.interval(1, TimeUnit.SECONDS);
-		seconds$.subscribe(System.out::println);
-		try {
-			//current thread goes to sleep in 5 seconds
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		stream$.map(String::length).subscribe(System.out::println);
+		stream$.map(String::length).subscribe((v) -> System.out.println("Herres the length " + v));
+		stream$.subscribe(System.out::println);
+		
+
 	}
 }

@@ -13,8 +13,10 @@ plugins {
 
 repositories {
     // Use JCenter for resolving dependencies.
-    jcenter()
+    //jcenter()
+    mavenCentral()
 }
+
 
 dependencies {
     // Use JUnit test framework.
@@ -23,6 +25,14 @@ dependencies {
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:29.0-jre'
     compile 'io.reactivex.rxjava3:rxjava:3.0.13-RC5'
+    compileOnly 'org.projectlombok:lombok:1.18.16'
+    annotationProcessor 'org.projectlombok:lombok:1.18.16'
+    
+    testCompileOnly 'org.projectlombok:lombok:1.18.16'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.16'
+    // https://mvnrepository.com/artifact/org.slf4j/slf4j-api
+implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.0-alpha1'
+    
 }
 
 application {
