@@ -1,4 +1,4 @@
-package com.sms.algorithms.hackerrank.warmup;
+package com.sms.algorithms.hackerrank.warmup.sockMerchant;
 
 import static java.util.stream.Collectors.toList;
 
@@ -18,7 +18,7 @@ public class SockMerchant {
 		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("sockMerchant.txt"));
 
-		// Not sure when they'd ask this
+		// Not sure why they'd ask this
 		int n = Integer.parseInt(bufferedReader.readLine().trim());
 
 		List<Integer> ar = Stream.of(bufferedReader.readLine().replaceAll("\\s+$", "").split(" "))
