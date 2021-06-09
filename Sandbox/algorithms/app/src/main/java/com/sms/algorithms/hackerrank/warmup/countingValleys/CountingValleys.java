@@ -61,7 +61,8 @@ public class CountingValleys {
         
         /**
          * declarative doesn't seem to help here or I am not doing
-         * what would need to be done to make declarative
+         * what would need to be done to make declarative. It does
+         * allow to separate work into a consumer. hmmm...
          * @param steps
          * @param path
          * @return
