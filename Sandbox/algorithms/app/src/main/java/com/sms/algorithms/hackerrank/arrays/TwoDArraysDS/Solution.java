@@ -1,15 +1,18 @@
 package com.sms.algorithms.hackerrank.arrays.TwoDArraysDS;
-import java.io.*;
-import java.math.*;
-import java.security.*;
-import java.text.*;
-import java.util.*;
-import java.util.concurrent.*;
-import java.util.function.*;
-import java.util.regex.*;
-import java.util.stream.*;
-import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 class Result {
 
@@ -60,7 +63,26 @@ class Result {
     			
     		}
     	}
-    	return maxSum;
+    	
+    	//declarative-ish
+    	AtomicInteger ai = new AtomicInteger(Integer.MIN_VALUE);
+    	IntStream.range(0, 4).forEach(row -> {
+    		IntStream.range(0,4).forEach(col1 -> {
+    			int top = arr.get(row).get(col1) + arr.get(row).get(col1 + 1) + arr.get(row).get(col1 + 2);
+    			int middle = arr.get(row + 1).get(col1 + 1);
+    			int bottom = arr.get(row + 2).get(col1) + arr.get(row + 2).get(col1 + 1) + arr.get(row + 2).get(col1 + 2);
+    			int hourglass = top + middle + bottom;
+    			
+    			if(ai.get() < hourglass) {
+    				ai.set(hourglass);
+    			}
+    		});
+    	});
+    	int rowCount = 0;
+    	System.out.println(arr);
+    	List<Optional<Integer>> flattened = arr.stream().map(row -> row.stream().reduce((agg, num) -> agg + num)).collect(Collectors.toList());
+    	flattened.stream().forEach(i -> System.out.print(i));
+    	return ai.get();
 
     }
 
