@@ -1,4 +1,4 @@
-package com.sms.algorithms.arrays.minimumSwaps;
+package com.sms.algorithms.hackerrank.arrays.minimumSwaps;
 import java.io.*;
 import java.math.*;
 import java.security.*;
